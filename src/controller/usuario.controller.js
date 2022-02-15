@@ -60,6 +60,11 @@ usuarioaCtrl.editUsuario = async (req,res)=>{
             cargo: req.body.cargo
         };
 
+        const usuario = await Usuario.findOne({cedula:req.params.cedula});
+        if(usuario == null || usuario.length == 0){
+            return res.send("No hay ningun usuario registrado con esta cedula");
+        }
+
         await Usuario.updateOne({cedula:req.params.cedula}, userTemp);
         return res.send("Usuario actualizado con exito");
     } catch (error) {

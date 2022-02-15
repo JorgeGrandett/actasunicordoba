@@ -9,7 +9,7 @@ let actaSchema = new Schema({
     participantes: {type:Array, required:true},
     agenda: {type:String, required:true},
     notasReunion: {type:String, required:true},
-    puntosAccion :{type:Array, required:true}
+    puntosAccion: {type:Array, required:true}
 });
 
 const Acta = mongoose.model('Acta', actaSchema);
