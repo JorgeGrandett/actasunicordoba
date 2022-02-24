@@ -26,8 +26,10 @@ usuarioaCtrl.getUsuario = async (req,res)=>{
 
 usuarioaCtrl.createUsuario = async (req,res)=>{ 
     try {
+        console.log(req);
         const userTemp = {
             cedula: req.body.cedula,
+            consetraseña: req.body.contraseña,
             nombre: req.body.nombre,
             apellido: req.body.apellido,
             telefono: req.body.telefono,
@@ -36,7 +38,7 @@ usuarioaCtrl.createUsuario = async (req,res)=>{
         };
 
         const usuario = await Usuario.findOne({cedula:userTemp.cedula});
-        if(!usuario == null || !usuario.length == 0){
+        if(!(usuario == null || usuario.length == 0)){
             return res.send("Ya se encuetran registrado un usuario con esta cedula");
         }
 
@@ -53,6 +55,7 @@ usuarioaCtrl.editUsuario = async (req,res)=>{
     try {
         const userTemp = {
             cedula: req.body.cedula,
+            contraseña: req.body.contraseña,
             nombre: req.body.nombre,
             apellido: req.body.apellido,
             telefono: req.body.telefono,

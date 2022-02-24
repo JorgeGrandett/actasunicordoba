@@ -3,7 +3,7 @@ const {Schema} = require('mongoose');
 
 let actaSchema = new Schema({
     nombreOrganizador: {type:String, required:true},
-    idActa: {type:String, required:true},
+    cargoOrganizador: {type:String, required:true},
     fecha: {type:String, required:true},
     hora: {type:String, required:true},
     participantes: {type:Array, required:true},

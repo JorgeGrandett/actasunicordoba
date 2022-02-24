@@ -13,7 +13,7 @@ actaCtrl.getActas = async (req,res)=>{
 
 actaCtrl.getActa = async (req,res)=>{
     try {
-        const acta  = await Acta.findOne({idActa:req.params.idActa});
+        const acta  = await Acta.findById(req.params.idActa);
         if(acta == null || acta.length == 0){
             return res.send("No se encontro el acta buscada");
         }
@@ -28,7 +28,7 @@ actaCtrl.createActa = async (req,res)=>{
     try {
         const actTemp = {     
             nombreOrganizador: req.body.nombreOrganizador,
-            idActa: req.body.idActa,
+            cargoOrganizador: req.body.idActa,
             fecha: req.body.fecha,
             hora: req.body.hora,
             participantes: req.body.participantes,
@@ -36,11 +36,6 @@ actaCtrl.createActa = async (req,res)=>{
             notasReunion: req.body.notasReunion,
             puntosAccion: req.body.puntosAccion
         };
-
-        const usuario = await Acta.findOne({idActa:actTemp.idActa});
-        if(!usuario == null || !usuario.length == 0){
-            return res.send("Ya existe una acta con este id");
-        }
 
         let _acta  =  new Acta(actTemp);
         await _acta.save();
@@ -55,7 +50,7 @@ actaCtrl.editActa = async (req,res)=>{
     try {
         const actTemp = {     
             nombreOrganizador: req.body.nombreOrganizador,
-            idActa: req.body.idActa,
+            cargoOrganizador: req.body.idActa,
             fecha: req.body.fecha,
             hora: req.body.hora,
             participantes: req.body.participantes,
@@ -64,12 +59,12 @@ actaCtrl.editActa = async (req,res)=>{
             puntosAccion: req.body.puntosAccion
         };
 
-        const usuario = await Acta.findOne({idActa:req.params.idActa});
+        const usuario = await Acta.findById(req.params.idActa);
         if(usuario == null || usuario.length == 0){
             return res.send("No existe una acta con este id");
         }
 
-        await Acta.updateOne({idActa:req.params.idActa}, actTemp);
+        await Acta.findByIdAndUpdate(req.params.idActa, actTemp);
         return res.send('Acta actualizada satisfactoriamente'); 
     } catch (error) {
         console.log(error)
