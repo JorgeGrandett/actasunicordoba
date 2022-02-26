@@ -29,7 +29,7 @@ usuarioaCtrl.createUsuario = async (req,res)=>{
         console.log(req);
         const userTemp = {
             cedula: req.body.cedula,
-            consetraseña: req.body.contraseña,
+            contraseña: req.body.contraseña,
             nombre: req.body.nombre,
             apellido: req.body.apellido,
             telefono: req.body.telefono,
