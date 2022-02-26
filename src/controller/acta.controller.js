@@ -124,32 +124,32 @@ actaCtrl.descargarActa = async (req,res) => {
                         },
                         {
                             text: "Fecha: "+acta.fecha,
-                            style: "h5",
+                            style: "h4",
                             alignment: "left",
                             margin:[0,20]
                         },
                         {
                             text: "Hora: "+acta.hora,
-                            style: "h5",
+                            style: "h4",
                             alignment: "left",
                             margin:[0,20]
                         },
                         {
                             text: [
                                 {
-                                    text: "ORGANIZADOR: "+acta.nombreOrganizador, style: "h4", alignment: "left",
+                                    text: "ORGANIZADOR: "+acta.nombreOrganizador+".\n", style: "h4", alignment: "left",
                                 },
                                 {
-                                    text: "CARGO DEL ORGANIZADOR: "+acta.cargoOrganizador, style: "h4", alignment: "left",
+                                    text: "CARGO DEL ORGANIZADOR: "+acta.cargoOrganizador+".\n", style: "h4", alignment: "left",
                                 },
                                 {
-                                    text: "PARTICIPANTES: "+obtenerParticipantes(acta.participantes), style: "h4", alignment: "left",
+                                    text: "PARTICIPANTES: "+obtenerParticipantes(acta.participantes)+"\n", style: "h4", alignment: "left",
                                 },
                                 {
-                                    text: "AGENDA: "+acta.agenda, style: "h4", alignment: "left",
+                                    text: "AGENDA: "+acta.agenda+".\n", style: "h4", alignment: "left",
                                 },
                                 {
-                                    text: "NOTAS DE LA REUNION: "+acta.notasReunion, style: "h4", alignment: "left",
+                                    text: "NOTAS DE LA REUNION: "+acta.notasReunion+".\n", style: "h4", alignment: "left",
                                 },
                                 {
                                     text: "PUNTOS DE ACCION: "+obtenerPuntosAccion(acta.puntosAccion), style: "h4", alignment: "left",
